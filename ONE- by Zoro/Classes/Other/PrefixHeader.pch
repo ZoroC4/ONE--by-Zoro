@@ -1,0 +1,32 @@
+//
+//  PrefixHeader.pch
+//  ONE- by Zoro
+//
+//  Created by grylls on 15/11/12.
+//  Copyright © 2015年 grylls. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+
+//日志
+#ifdef DEBUG
+#define ZoroLog(...) NSLog(__VA_ARGS__)
+#else
+#define ZoroLog(...)
+#endif
+
+#define ZoroLogFunc ZoroLog(@"%s", __func__);
+
+//颜色
+#define ZoroColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
+#define ZoroColor(r, g, b) ZoroColorA((r), (g), (b), 255)
+#define ZoroRandomColor ZoroColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+
+#endif
+
+#endif
